@@ -2,6 +2,7 @@ from flask import Flask, request
 from faker import Faker
 import csv
 import statistics
+import requests
 
 
 flask_hw = Flask(__name__)
@@ -42,6 +43,13 @@ def mean():
     mean_h = statistics.mean(height)*2.54
     mean_w = statistics.mean(weight)*0.453592
     return f"Mean height = {mean_h} cm<p></p>Mean weight = {mean_w} kg"
+
+
+@flask_hw.route("/space/")
+def space():
+    r = requests.get('http://api.open-notify.org/astros.json')
+    result = r.json()['number']
+    return f"{result}"
 
 
 if __name__ == '__main__':
