@@ -6,6 +6,6 @@ CREATE TABLE track (
   title TEXT NOT NULL,
   artist TEXT NOT NULL UNIQUE ,
   genre TEXT NOT NULL,
-  length INTEGER NOT NULL
+  track_length INTEGER NOT NULL
 );
 

@@ -30,6 +30,13 @@ def init_db():
         db.executescript(f.read().decode('utf8'))
 
 
+def fill_db():
+    db = get_db()
+
+    with current_app.open_resource('fixture.sql') as f:
+        db.executescript(f.read().decode('utf8'))
+
+
 @click.command('init-db')
 @with_appcontext
 def init_db_command():
@@ -37,6 +44,16 @@ def init_db_command():
     init_db()
     click.echo('Initialized the database.')
 
+
+@click.command('fill-db')
+@with_appcontext
+def fill_db_command():
+    """Clear the existing data and create new tables."""
+    fill_db()
+    click.echo('Filled the database.')
+
+
 def init_app(flask_hw):
     flask_hw.teardown_appcontext(close_db)
     flask_hw.cli.add_command(init_db_command)
+    flask_hw.cli.add_command(fill_db_command)
