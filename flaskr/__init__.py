@@ -1,12 +1,13 @@
 import os
-
-from flask import Flask
-
-from flask import Flask, request
+from flask import (
+   Flask, flash, g, redirect, render_template, request, session, url_for
+)
 from faker import Faker
 import csv
 import statistics
 import requests
+import functools
+from flaskr.db import get_db
 
 
 def create_app(test_config=None):
@@ -75,11 +76,16 @@ def create_app(test_config=None):
         result = r.json()['number']
         return f"{result}"
 
-    @flask_hw.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    @flask_hw.route('/names/')
+    def names():
+        db = get_db()
+        names = db.execute(
+            'SELECT COUNT(DISTINCT artist)'
+            ' FROM track'
+                ).fetchone()[0]
+        return  render_template('names.html', names=names)
 
-    from . import db
-    db.init_app(flask_hw)
+
+
 
     return flask_hw
