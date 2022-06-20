@@ -107,5 +107,17 @@ def create_app(test_config=None):
         return render_template('genre.html', result=result, genre_1=genre_1)
 
 
+    @flask_hw.route('/tracks-sec/')
+    def tracks_sec():
+        tracks = []
+        db = get_db()
+        result = db.execute(
+            "SELECT title, track_length FROM track"
+            ).fetchall()
+        for row in result:
+            tracks.append(row[0:len(row)])
+        return render_template('track_length.html', result=tracks)
+
+
 
     return flask_hw
