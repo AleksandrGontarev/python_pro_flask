@@ -8,6 +8,7 @@ import statistics
 import requests
 import functools
 from flaskr.db import get_db
+from pprint import pprint
 
 
 def create_app(test_config=None):
@@ -82,9 +83,28 @@ def create_app(test_config=None):
         names = db.execute(
             'SELECT COUNT(DISTINCT artist)'
             ' FROM track'
-                ).fetchone()[0]
+                ).fetchall()
         return  render_template('names.html', names=names)
 
+
+    @flask_hw.route('/traks/')
+    def traks():
+        db = get_db()
+        traks = db.execute(
+            'SELECT COUNT(*)'
+            ' FROM track'
+        ).fetchone()
+        return render_template('traks.html', traks=traks)
+
+
+    @flask_hw.route('/tracks/<genre_1>')
+    def genre(genre_1):
+        db = get_db()
+        result = db.execute(
+            "SELECT COUNT (*) FROM track WHERE genre = ?",
+            (genre_1,)
+        ).fetchall()[0]
+        return render_template('genre.html', result=result, genre_1=genre_1)
 
 
 
