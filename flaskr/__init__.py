@@ -119,5 +119,17 @@ def create_app(test_config=None):
         return render_template('track_length.html', result=tracks)
 
 
+    @flask_hw.route('/tracks-sec/statistics/')
+    def statistics():
+        db = get_db()
+        result = db.execute(
+            "SELECT AVG(track_length) FROM track"
+            ).fetchone()[0]
+        total_duration = db.execute(
+            "SELECT SUM(track_length) FROM track"
+            ).fetchone()[0]
+        return render_template('statistics.html', result=result, total_duration=total_duration)
+
+
 
     return flask_hw
