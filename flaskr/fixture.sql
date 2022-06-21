@@ -1,0 +1,20 @@
+INSERT INTO track (title, artist, genre, track_length)
+VALUES
+    ('The Show Must Go On', 'Queen', 'Rock', 4.32 ),
+    ('I Just Called To Say I Love You', 'Stevie Wonder', 'Pop', 4.22),
+    ('Despacito', 'Luis Fonsi, Daddy Yankee', 'Pop', 3.49),
+    ('The Road To Hell', 'Chris Rea', 'Blues', 4.25),
+    ('Bad Romance', 'Lady Gaga', 'Pop', 4.21),
+    ('The Final Countdown', 'Europe ', 'Hard Rock', 5.10),
+    ('Rolling In The Deep', 'Adele', 'Pop', 3.48),
+    ('Love Me Tender', 'Elvis Presley', 'Rock n Roll', 2.42),
+    ('Believer', 'Imagine Dragons', 'Rock', 3.26),
+    ('Hotel California', 'Eagles', 'Rock', 6.31),
+    (' Knockin on Heavens Door', 'Bob Dylan', 'Folk Rock', 2.29),
+    ('In The Army Now', 'Status Quo', 'Hard Rock', 4.41),
+    ('Numb', 'Linkin Park', 'Alternative Rock', 3.07),
+    ('Wonderful Life', 'Black', 'Pop', 4.46),
+    ('Zombie', 'The Cranberries', 'Rock', 5.06),
+    ('Every Breath You Take', 'The Police', 'Pop', 4.13),
+    ('Englishman In New York', 'Sting', 'Jazz', 4.25),
+    ('Listen To Your Heart', 'Roxette', 'Pop rock', 5.10);
